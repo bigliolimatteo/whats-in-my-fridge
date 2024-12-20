@@ -1,18 +1,19 @@
-from datetime import date
+from datetime import date, datetime
 
 class GenericFood:
-    def __init__(self, name, purchase_date, expiration_date, quantity):
+    def __init__(self, name: str, purchase_date: datetime, expiration_date: datetime, quantity: float):
         self.name = name
-        self.purchase_date = date.fromisoformat(purchase_date)
-        self.expiration_date = date.fromisoformat(expiration_date)
-        self.quantity = quantity
+        self.purchase_date = purchase_date
+        self.expiration_date = expiration_date
+        if quantity > 0:
+            self.quantity = quantity
+        else:
+            raise Exception("Quantity must be greater than 0!")
 
     def consume_food(self, amount):       
         if amount > self.quantity:
             raise Exception("You cannot consume more than you have!")
-        elif amount == self.quantity:
-            self.quantity -= amount
-        else:
+        elif amount <= self.quantity:
             self.quantity -= amount
 
     @classmethod
