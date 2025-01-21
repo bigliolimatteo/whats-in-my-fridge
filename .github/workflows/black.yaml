@@ -10,4 +10,3 @@ jobs:
           python-version: 3.12.8
       - run: pip install black
       - run: black --check .
-          black --check .
