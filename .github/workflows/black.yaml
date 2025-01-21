@@ -9,5 +9,5 @@ jobs:
         with:
           python-version: 3.12.8
       - run: pip install black
-      - run: |
+      - run: black --check .
           black --check .
