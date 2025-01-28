@@ -6,7 +6,6 @@ import unittest
 from datetime import datetime
 from generic_classes.generic_food import GenericFood
 
-
 class TestGenericFood(unittest.TestCase):
 
     def test_generic_food_creation(self):
