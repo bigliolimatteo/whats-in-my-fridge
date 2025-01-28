@@ -1,10 +1,17 @@
 import sys
 import os
+
 # Add the parent directory of 'generic_classes' to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..', 'whats-in-my-fridge')))
+sys.path.insert(
+    0,
+    os.path.abspath(
+        os.path.join(os.path.dirname(__file__), "../..", "whats-in-my-fridge")
+    ),
+)
 import unittest
 from datetime import datetime
 from generic_classes.generic_food import GenericFood
+
 
 class TestGenericFood(unittest.TestCase):
 
