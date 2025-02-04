@@ -1,27 +1,26 @@
 from dataclasses import dataclass
 from datetime import datetime
 
-
 @dataclass
 class GenericFood:
     _name: str
     _expiration_date: datetime
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
     @name.setter
-    def name(self, name: str):
+    def name(self, name: str) -> None:
         self._name = name
 
     @property
-    def expiration_date(self):
+    def expiration_date(self) -> datetime:
         return self._expiration_date
 
     @expiration_date.setter
-    def expiration_date(self, expiration_date: datetime):
+    def expiration_date(self, expiration_date: datetime) -> None:
         self._expiration_date = expiration_date
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Type of food: {self._name}, expiration date: {self._expiration_date}"
