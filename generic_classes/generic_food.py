@@ -7,7 +7,6 @@ class GenericFood:
     name: str
     purchase_date: datetime
     expiration_date: datetime
-    quantity: float
 
     @property
     def name(self):
@@ -36,18 +35,5 @@ class GenericFood:
         ), "Expiration date must be after purchase date!"
         self._expiration_date = expiration_date
 
-    @property
-    def quantity(self):
-        return self._quantity
-
-    @quantity.setter
-    def quantity(self, quantity: float):
-        assert quantity > 0, "Quantity must be greater than 0!"
-        self._quantity = quantity
-
-    def modify_quantity(self, new_quantity):
-        if new_quantity is not None and new_quantity > 0:
-            self.quantity = new_quantity
-
     def __str__(self):
-        return f"Type of food: {self.name}, purchased on: {self.purchase_date}, expiration date: {self.expiration_date}, quantity: {self.quantity}"
+        return f"Type of food: {self.name}, purchased on: {self.purchase_date}, expiration date: {self.expiration_date}"
