@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
+
 @dataclass
 class GenericFood:
     _name: str
@@ -24,3 +25,6 @@ class GenericFood:
 
     def __str__(self) -> str:
         return f"Type of food: {self._name}, expiration date: {self._expiration_date}"
+
+    def __hash__(self) -> int:
+        return hash((self._name, self._expiration_date))
