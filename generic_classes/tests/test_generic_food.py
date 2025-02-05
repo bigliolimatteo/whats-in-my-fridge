@@ -10,9 +10,9 @@ from generic_classes.generic_food import GenericFood
 class TestGenericFood(unittest.TestCase):
 
     def test_generic_food_creation(self):
-        banana = GenericFood(_name="Banana", _expiration_date=datetime(2024, 12, 10))
-        self.assertEqual(banana._name, "Banana")
-        self.assertEqual(banana._expiration_date, datetime(2024, 12, 10))
+        banana = GenericFood(name="Banana", expiration_date=datetime(2024, 12, 10))
+        self.assertEqual(banana.name, "Banana")
+        self.assertEqual(banana.expiration_date, datetime(2024, 12, 10))
 
 
 if __name__ == "__main__":

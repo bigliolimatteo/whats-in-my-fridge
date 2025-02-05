@@ -4,8 +4,8 @@ from datetime import datetime
 
 @dataclass
 class GenericFood:
-    _name: str
-    _expiration_date: datetime
+    name: str
+    expiration_date: datetime
 
     @property
     def name(self) -> str:
