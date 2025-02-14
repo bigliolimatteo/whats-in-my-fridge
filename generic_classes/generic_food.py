@@ -28,3 +28,6 @@ class GenericFood:
 
     def __hash__(self) -> int:
         return hash((self._name, self._expiration_date))
+
+    def calculate_food_volume(self, quantity: float) -> float:
+        return NotImplementedError("This method must be implemented in the subclass.")

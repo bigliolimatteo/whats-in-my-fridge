@@ -1,49 +1,42 @@
-import sys
-import os
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 import unittest
 from datetime import datetime
+
 from generic_classes.generic_food_storage import GenericFoodStorage
 from generic_classes.generic_food import GenericFood
 
 
+class TestFruit(GenericFood):
+    def calculate_food_volume(self, quantity: float) -> float:
+        return 0 if 0 < quantity < 5 else 1
+
+
 class TestGenericFoodStorage(unittest.TestCase):
     def setUp(self):
-        self.banana = GenericFood(name="Banana", expiration_date=datetime(2024, 12, 10))
+        self.banana = TestFruit(name="Banana", expiration_date=datetime(2024, 12, 10))
         self.fridge = GenericFoodStorage(
-            name="Fridge", capacity=10, foods={self.banana: 2}, food_volume=2
+            name="Fridge", capacity=10, foods={self.banana: 2}
         )
 
     def test_storage_initialization(self):
         self.assertEqual(self.fridge.name, "Fridge")
         self.assertEqual(self.fridge.capacity, 10)
         self.assertEqual(len(self.fridge.foods), 1)
-        self.assertEqual(self.fridge.food_volume, 2)
-
-    def test_increase_capacity(self):
-        self.fridge.increase_capacity(2)
-        self.assertEqual(self.fridge.capacity, 12)
-
-    def test_decrease_capacity(self):
-        self.fridge.decrease_capacity(2)
-        self.assertEqual(self.fridge.capacity, 8)
 
     def test_increase_quantity(self):
-        self.fridge.add_food(self.banana, 3, 3)
+        self.fridge.add_food(self.banana, 3)
         self.assertEqual(self.fridge.foods, {self.banana: 5})
-        self.assertEqual(self.fridge.capacity, 7)
+        self.assertEqual(self.fridge.capacity, 9)
 
     def test_add_food(self):
-        apple = GenericFood(name="Apple", expiration_date=datetime(2024, 11, 10))
-        self.fridge.add_food(apple, 5, 5)
+        apple = TestFruit(name="Apple", expiration_date=datetime(2024, 11, 10))
+        self.fridge.add_food(apple, 5)
         self.assertEqual(len(self.fridge.foods), 2)
-        self.assertEqual(self.fridge.capacity, 5)
+        self.assertEqual(self.fridge.capacity, 9)
         with self.assertRaises(Exception):
             self.fridge.add_food(apple, 12, 12)
 
     def test_consume_food(self):
-        self.fridge.consume_food(self.banana, 1, 0)
+        self.fridge.consume_food(self.banana, 1)
         self.assertEqual(self.fridge.foods, {self.banana: 1})
         self.assertEqual(self.fridge.capacity, 10)
 
