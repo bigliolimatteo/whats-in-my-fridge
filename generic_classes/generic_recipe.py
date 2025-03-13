@@ -1,15 +1,15 @@
 from dataclasses import dataclass
 from datetime import datetime
-from generic_classes.generic_food import GenericFood
+from generic_classes.nutritional_info import NutritionalInformation
 
 
 @dataclass
 class GenericRecipe:
     name: str
-    ingredients: GenericFood
+    ingredients: list
     expiration_date: datetime
     cooking_time: int
-    total_kcal: int
+    nutritional_info: NutritionalInformation
 
     @property
     def name(self) -> str:
@@ -20,11 +20,11 @@ class GenericRecipe:
         self._name = name
 
     @property
-    def ingredients(self) -> GenericFood:
+    def ingredients(self) -> list:
         return self._ingredients
 
     @ingredients.setter
-    def ingredients(self, ingredients: GenericFood) -> None:
+    def ingredients(self, ingredients: list) -> None:
         self._ingredients = ingredients
 
     @property
@@ -44,12 +44,12 @@ class GenericRecipe:
         self._cooking_time = cooking_time
 
     @property
-    def total_kcal(self) -> int:
-        return self._total_kcal
+    def nutritional_info(self) -> NutritionalInformation:
+        return self._nutritional_info
 
-    @total_kcal.setter
-    def total_kcal(self, total_kcal: int) -> None:
-        self._total_kcal = total_kcal
+    @nutritional_info.setter
+    def nutritional_info(self, nutritional_info: NutritionalInformation) -> None:
+        self._nutritional_info = nutritional_info
 
     def __str__(self) -> str:
-        return f"Recipe name: {self._name}, ingredients: {self._ingredients}, expiration date: {self._expiration_date}, cooking time: {self._cooking_time}, total kcal: {self._total_kcal}"
+        return f"Recipe name: {self._name}, ingredients: {self._ingredients}, expiration date: {self._expiration_date}, cooking time: {self._cooking_time}, nutritional information: {self._nutritional_info}."
