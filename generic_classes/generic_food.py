@@ -7,27 +7,11 @@ class GenericFood:
     name: str
     expiration_date: datetime
 
-    @property
-    def name(self) -> str:
-        return self._name
-
-    @name.setter
-    def name(self, name: str) -> None:
-        self._name = name
-
-    @property
-    def expiration_date(self) -> datetime:
-        return self._expiration_date
-
-    @expiration_date.setter
-    def expiration_date(self, expiration_date: datetime) -> None:
-        self._expiration_date = expiration_date
-
     def __str__(self) -> str:
-        return f"Type of food: {self._name}, expiration date: {self._expiration_date}"
+        return f"Type of food: {self.name}, expiration date: {self.expiration_date}"
 
     def __hash__(self) -> int:
-        return hash((self._name, self._expiration_date))
+        return hash((self.name, self.expiration_date))
 
     def calculate_food_volume(self, quantity: float) -> float:
-        return NotImplementedError("This method must be implemented in the subclass.")
+        raise NotImplementedError("This method must be implemented in the subclass.")

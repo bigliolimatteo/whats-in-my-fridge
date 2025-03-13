@@ -9,4 +9,4 @@ jobs:
         with:
           python-version: 3.11
       - run: pip install -U mypy
-      - run: mypy --install-types --non-interactive
+      - run: mypy .
