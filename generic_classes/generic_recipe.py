@@ -13,4 +13,4 @@ class GenericRecipe:
     nutritional_info: NutritionalInformation
 
     def __str__(self) -> str:
-        return f"Recipe name: {self._name}, ingredients: {self._ingredients}, expiration date: {self._expiration_date}, cooking time: {self._cooking_time}, nutritional information: {self._nutritional_info}."
+        return f"Recipe name: {self.name}, ingredients: {self.ingredients}, expiration date: {self.expiration_date}, cooking time: {self.cooking_time}, nutritional information: {self.nutritional_info}."
