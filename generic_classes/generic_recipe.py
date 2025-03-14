@@ -6,7 +6,7 @@ from generic_classes.nutritional_info import NutritionalInformation
 @dataclass
 class GenericRecipe:
     name: str
-    ingredients: list
+    ingredients: list[GenericFood]
     expiration_date: datetime
     cooking_time: int
     nutritional_info: NutritionalInformation
