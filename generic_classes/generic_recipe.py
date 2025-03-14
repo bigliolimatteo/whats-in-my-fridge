@@ -3,6 +3,7 @@ from datetime import datetime
 from generic_classes.nutritional_info import NutritionalInformation
 from generic_classes.generic_food import GenericFood
 
+
 @dataclass
 class GenericRecipe:
     name: str
