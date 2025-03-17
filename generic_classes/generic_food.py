@@ -25,4 +25,4 @@ class GenericFood:
         return False
 
     def calculate_food_volume(self, quantity: float) -> float:
-        return NotImplementedError("This method must be implemented in the subclass.")
+        raise NotImplementedError("This method must be implemented in the subclass.")
