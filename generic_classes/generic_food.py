@@ -8,10 +8,21 @@ class GenericFood:
     expiration_date: datetime
 
     def __str__(self) -> str:
-        return f"Type of food: {self._name}, expiration date: {self._expiration_date}"
+        return f"Type of food: {self.name}, expiration date: {self.expiration_date}"
 
     def __hash__(self) -> int:
-        return hash((self._name, self._expiration_date))
+        return hash((self.name, self.expiration_date))
+
+    def __eq__(self, other):
+
+        if isinstance(other, GenericFood):
+
+            return (
+                self.name == other.name
+                and self.expiration_date == other.expiration_date
+            )
+
+        return False
 
     def calculate_food_volume(self, quantity: float) -> float:
         return NotImplementedError("This method must be implemented in the subclass.")

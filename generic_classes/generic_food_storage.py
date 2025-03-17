@@ -14,6 +14,12 @@ class GenericFoodStorage:
             f.calculate_food_volume(q) for f, q in self.foods.items()
         )
 
+    @capacity.setter
+    def capacity(self, value: float) -> None:
+        if value < 0:
+            raise ValueError("Capacity cannot be negative.")
+        self._capacity = value
+
     def add_food(self, new_food: GenericFood, quantity: float) -> None:
         if (
             new_food in self.foods
@@ -53,3 +59,15 @@ class GenericFoodStorage:
 
     def __str__(self):
         return f"{self.name} with capacity: {self.capacity}, containing: {[str(f) for f in self.foods]}"
+
+    def __eq__(self, other):
+
+        if isinstance(other, GenericFoodStorage):
+
+            return (
+                self.name == other.name
+                and self.capacity == other.capacity
+                and self.foods == other.foods
+            )
+
+        return False
